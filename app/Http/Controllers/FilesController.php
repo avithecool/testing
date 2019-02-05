@@ -38,7 +38,7 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //test
         $attr = array(
                         'title'=>'required',
                         'description'=>'required',
