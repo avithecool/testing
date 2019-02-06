@@ -49,7 +49,7 @@
 
                        <div class="form-group">
                         <label>version</label>
-                        <input type="text" class="form-control required"  name="version" aria-describedby="emailHelp" placeholder="Version">
+                        <input type="text" class="form-control required" value="{{old('version')}}"  name="version" aria-describedby="emailHelp" placeholder="Version">
                        </div>
 
                    <div class="form-check">
@@ -64,6 +64,7 @@
 
  @include('manager.components.errors')
 
+ {{ Session::get("error_msg") }}
         </div>
         <!-- /.col -->
     </div>

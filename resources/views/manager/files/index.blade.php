@@ -10,7 +10,6 @@
 
 
 @section('content')
-
 @component('manager.files.toolbar')
 
     @slot('title')
@@ -45,7 +44,10 @@
     <tr>
         <td>{{ $file->id }}</td>
         <td>{{ $file->title }}</td>
+
         <td>{{ $file->description }}</td>
+    <td><img src="{{ Storage::url('/app/'.$file->image )}}" /></td>
+
         <td>{{ $file->state }}</td>
 
           <td>
@@ -57,7 +59,9 @@
     </form>
 
     </td>
-
+<td>
+    Edit
+</td>
     </tr>
     @empty
       <tr>
