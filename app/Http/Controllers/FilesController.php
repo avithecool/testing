@@ -67,8 +67,7 @@ class FilesController extends Controller
         $data['filename'] = $extpath;
         Files::create($data);
         return redirect('manager/files');
-        var_dump($data);die;
-    }
+     }
 
     /**
      * Display the specified resource.
@@ -90,6 +89,8 @@ class FilesController extends Controller
     public function edit($id)
     {
         //
+        $file =Files::findorfail($id);
+        return view('manager.files.edit',compact('file',$file));
     }
 
     /**
@@ -110,8 +111,10 @@ class FilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
         //
+        Files::destroy($id);
+        return redirect('manager/files')->with('message','File Deleted');
     }
 }

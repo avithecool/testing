@@ -22,6 +22,9 @@
 
 @endcomponent
 
+@if(session('message'))
+{{session('message')}}
+@endif
 
  <div class="row">
         <div class="col-md-12">
@@ -60,7 +63,9 @@
 
     </td>
 <td>
+<a href="files/{{$file->id}}/edit">
     Edit
+    </a>
 </td>
     </tr>
     @empty
