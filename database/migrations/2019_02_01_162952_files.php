@@ -20,9 +20,7 @@ class Files extends Migration
             $table->string('description');
             $table->string('filename');
             $table->string('image');
-
             $table->integer('state');
-            $table->string('version');
             $table->float('price');
             $table->rememberToken();
             $table->timestamps();

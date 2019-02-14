@@ -43,9 +43,7 @@ class FilesController extends Controller
         $attr = array(
                         'title'=>'required',
                         'description'=>'required',
-                        'price'=>'required',
-                        'state'=>'required',
-                        'version'=>'required'
+                        'price'=>'required'
 
                     );
 
@@ -90,7 +88,8 @@ class FilesController extends Controller
     {
         //
         $file =Files::findorfail($id);
-        return view('manager.files.edit',compact('file',$file));
+        $versions =Files::findorfail($id)->fileversions();
+        return view('manager.files.edit',compact('file',$file,'versions',$versions));
     }
 
     /**
@@ -103,7 +102,20 @@ class FilesController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+
+        $attr = array(
+            'title'=>'required',
+            'description'=>'required',
+            'price'=>'required'
+
+        );
+
+        $data = $request->validate($attr);
+        $data['state'] = $request->get('state')?1:'0';
+        $file = Files::find($id);
+        $file->update($data);
+        return redirect('manager/files/'.$id.'/edit')->with('message','Saved');
+}
 
     /**
      * Remove the specified resource from storage.
